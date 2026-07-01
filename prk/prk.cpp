@@ -1,32 +1,47 @@
 ﻿#define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
-#include <windows.h>
+#include <stdlib.h>
 
 #define MAX_SIZE 1000
 
+// Сортировка выбором (из твоего кода)
+void selectionSort(int arr[], int n)
+{
+    int i, j, minIndex, temp;
+
+    for (i = 0; i < n - 1; i++)
+    {
+        minIndex = i;
+
+        for (j = i + 1; j < n; j++)
+        {
+            if (arr[j] < arr[minIndex])
+            {
+                minIndex = j;
+            }
+        }
+
+        temp = arr[i];
+        arr[i] = arr[minIndex];
+        arr[minIndex] = temp;
+    }
+}
+
 int main()
 {
-    SetConsoleCP(1251);
-    SetConsoleOutputCP(1251);
-
-    char buffer[MAX_PATH];
-    GetCurrentDirectoryA(MAX_PATH, buffer);
-    printf("Текущая папка: %s\n\n", buffer);
-
-    // Открытие CSV-файла
     FILE* input = fopen("input.csv", "r");
 
     if (input == NULL)
     {
-        printf("Ошибка: не удалось открыть файл input.csv\n");
+        printf("Ошибка: не удалось открыть файл\n");
         return 1;
     }
 
-    // Чтение данных в массив
     int arr[MAX_SIZE];
     int n = 0;
 
+    // 🔹 РЕАЛИЗАЦИЯ ЧТЕНИЯ CSV (твой код)
     while (1)
     {
         if (fscanf(input, "%d", &arr[n]) != 1)
@@ -34,7 +49,7 @@ int main()
             if (feof(input))
                 break;
 
-            printf("Ошибка: некорректные данные во входном файле.\n");
+            printf("Ошибка данных в файле\n");
             fclose(input);
             return 1;
         }
@@ -48,7 +63,7 @@ int main()
 
         if (c != ',')
         {
-            printf("Ошибка: неверный формат CSV.\n");
+            printf("Ошибка формата CSV\n");
             fclose(input);
             return 1;
         }
@@ -56,8 +71,16 @@ int main()
 
     fclose(input);
 
-    // Вывод считанных данных
-    printf("Файл успешно прочитан.\n");
+    // 🔹 СОРТИРОВКА (добавлена к чтению)
+    selectionSort(arr, n);
+
+    // 🔹 вывод результата (чтобы видеть, что всё работает)
+    printf("Отсортированный массив:\n");
+
+    for (int i = 0; i < n; i++)
+    {
+        printf("%d ", arr[i]);
+    }
 
     return 0;
 }

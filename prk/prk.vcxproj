@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>18.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{6d9144da-6d38-46ab-894e-0fbe9782e316}</ProjectGuid>
+    <ProjectGuid>{45f96cf1-f69b-474d-b75f-3eb3b1abfc63}</ProjectGuid>
     <RootNamespace>prk</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
