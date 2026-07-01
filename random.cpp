@@ -1,0 +1,56 @@
+int generateRandom(int arr[], int arr2[])
+{
+
+    int n;
+
+    printf("Введите количество чисел (максимум %d): ", MAX_SIZE);
+
+    scanf("%d", &n);
+
+    if (n <= 0 || n > MAX_SIZE)
+
+    {
+
+        printf("Ошибка: неверное количество.\n");
+
+        return 0;
+
+    }
+
+    int min, max;
+
+    printf("Введите минимальное значение: ");
+
+    scanf("%d", &min);
+
+    printf("Введите максимальное значение: ");
+
+    scanf("%d", &max);
+
+    if (min >= max)
+
+    {
+
+        printf("Ошибка: минимум должен быть меньше максимума.\n");
+
+        return 0;
+
+    }
+
+    srand((unsigned)time(NULL));
+
+    for (int i = 0; i < n; i++)
+
+    {
+
+        arr[i] = min + rand() % (max - min + 1);
+
+        arr2[i] = arr[i];
+
+    }
+
+    saveToFile(arr, n, "input.csv");
+
+    return n;
+
+}
