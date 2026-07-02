@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="prk/prk.vcxproj" />
+  <Project Path="prk/prk.vcxproj" Id="409ef5a7-2785-4096-9ac9-b0073a8908d7" />
 </Solution>
